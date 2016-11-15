@@ -1,0 +1,49 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0px;
+  padding: 0px; }
+
+.temp {
+  margin: 0px;
+  margin: 0px; }
+
+.header {
+  position: fixed;
+  width: 100%;
+  background-color: black;
+  color: white;
+  padding: 20px; }
+
+.eventContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%; }
+
+.sideBar {
+  position: fixed;
+  margin-top: 100px;
+  margin-left: 10px;
+  padding-left: 10px;
+  bottom: 250px; }
+
+.navElement {
+  color: red;
+  transition: all 2s ease;
+  padding: 20px; }
+
+.eventPage {
+  margin-left: 200px;
+  margin-top: 80px; }
+
+.active {
+  background-color: pink;
+  transition: all 2s ease; }
+
+.eventFooter {
+  background-color: black;
+  color: white;
+  margin-top: 50px;
+  padding: 10px;
+  height: 200px; }
+
+/*# sourceMappingURL=style.css.map */

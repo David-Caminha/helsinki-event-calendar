@@ -1,0 +1,15 @@
+doctype html
+html
+    script(src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js")
+    script(src='js/lib/angular/angular.js')
+    script(src='js/angularRoutes.js')
+    script(src='js/services.js')
+    script(src='js/controllers.js')
+    script(src='js/filters.js')
+    script(src='js/directives.js')
+    link(href='stylesheets/style.css', rel='stylesheet')
+    body
+        div(ng-app='myApp')
+            block content
+            .temp=message
+            ng-view
