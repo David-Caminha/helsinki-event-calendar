@@ -1,6 +1,26 @@
-
-h3 sou cenas
-
+div(ng-controller='MainCtrl')
+    #slides_control
+        div
+            carousel(interval='myInterval')
+                slide(ng-repeat='slide in slides', active='slide.active')
+                    img(ng-src='{{slide.image}}')
+                    .carousel-caption
+                        h4 Slide {{$index+1}}
+    .upcoming
+        h3 UPCOMING EVENTS
+    .calendar
+        .month January
+        .months(ng-repeat="month in months")
+            p {{month}}
+    .eventsMainContainer
+        .eventMain
+        .eventMain
+        .eventMain
+        .eventMain
+        .eventMain
+        .eventMain
+        .eventMain
+        .eventMain
 
 .eventFooter
     p Lorem ipstheEvent dolor sit amet, consectetur adipiscing elit. Nullam aliquet, quam nec venenatis

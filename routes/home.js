@@ -7,10 +7,7 @@ exports.partials = function(req, res) {
 };
 
 router.get('/', function(req, res, next) {
-    res.render('header', {
-        title: 'Hey',
-        message: 'Sou Home'
-    });
+    res.render('header', {});
 });
 
 router.get('/partials/:name', function(req, res) {

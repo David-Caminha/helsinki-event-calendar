@@ -1,4 +1,33 @@
 extends home
 
 block content
-    .header Isto e o meu header super fantástico
+    header.header-two-bars
+        .header-first-bar
+            .header-limiter
+                h1
+                    a(href='#')
+                        | Company
+                        span logo
+                nav
+                    a.selected(href='#') Home
+                    a(href='#') Event
+                    a(href='#') MyCalendar
+                    a(href='#') MyProfile
+                a.logout-button(href='#') Logout
+        .header-second-bar
+            .header-limiter
+                h2
+                    a(href='#') Search By...
+                nav
+                    a(href='#')
+                        i.fa.fa-comments-o
+                        |  Filters:
+                    a(href='#')
+                        i.fa.fa-file-text
+                        |  June-August
+                    a(href='#')
+                        i.fa.fa-group
+                        |  Helsinki
+                    a(href='#')
+                        i.fa.fa-cogs
+                        |  Change Filter
