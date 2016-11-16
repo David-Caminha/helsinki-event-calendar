@@ -13,7 +13,8 @@ body {
   width: 100%;
   background-color: black;
   color: white;
-  padding: 20px; }
+  padding: 20px;
+  height: 20px; }
 
 .banner {
   font-size: 21px;

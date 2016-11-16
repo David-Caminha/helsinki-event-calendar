@@ -1,0 +1,90 @@
+.calendar {
+  flex-direction: row;
+  width: 100%;
+  border-right: 1px solid #ddd;
+  display: flex;
+  text-align: center;
+  overflow: hidden; }
+
+.activeMonth {
+  background: #00D8B7; }
+
+.months {
+  padding: 10px;
+  border: 1px;
+  border-style: solid;
+  min-height: 50px;
+  min-width: 150px;
+  text-align: center;
+  font-size: 20px;
+  margin-top: 10px;
+  font-size: 28px;
+  font-weight: 600; }
+
+.month {
+  padding: 10px;
+  border: 1px;
+  border-style: solid;
+  min-height: 50px;
+  min-width: 150px;
+  text-align: center;
+  font-size: 20px;
+  margin-top: 10px;
+  background-color: #00D8B7;
+  font-size: 28px;
+  font-weight: 600;
+  color: white; }
+
+#slides_control > div {
+  height: 100%; }
+
+img {
+  width: 100%;
+  max-height: 500px;
+  margin: auto; }
+
+#slides_control {
+  left: 50%;
+  top: 20px;
+  margin-top: 100px; }
+
+.eventsMainContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center; }
+
+.eventMain {
+  margin: 20px;
+  height: 300px;
+  width: 550px;
+  background: url(../images/2.jpg);
+  background-size: 100% 100%; }
+
+.eventMain:hover {
+  height: 300px;
+  width: 550px;
+  background: url(../images/1.jpg);
+  background-size: 100% 100%; }
+
+.upcoming h3 {
+  color: #374045;
+  margin: 10px;
+  margin-bottom: 15px;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 30px;
+  padding-bottom: 20px;
+  text-transform: uppercase;
+  position: relative; }
+
+.upcoming h3:before {
+  content: ' ';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 40px;
+  height: 3px;
+  background: #00D8B7; }
+
+/*# sourceMappingURL=main.css.map */

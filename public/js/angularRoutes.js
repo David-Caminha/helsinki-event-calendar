@@ -6,13 +6,14 @@ angular.module('myApp', [
     'myApp.controllers',
     'myApp.filters',
     'myApp.services',
-    'myApp.directives'
+    'myApp.directives',
+    'ui.bootstrap'
 ]).
 config(function($routeProvider, $locationProvider) {
     $routeProvider.
     when('/', {
         templateUrl: 'partials/main.pug',
-        controller: 'MyCtrl2'
+        controller: 'MainCtrl'
     }).
     when('/event', {
         templateUrl: 'partials/event.pug',
@@ -23,7 +24,8 @@ config(function($routeProvider, $locationProvider) {
         controller: 'MyCtrl2'
     }).
     otherwise({
-        redirectTo: '/teste'
+        redirectTo: '/teste',
+        controller: 'MainCtrl'
     });
 
     $locationProvider.html5Mode(true);
