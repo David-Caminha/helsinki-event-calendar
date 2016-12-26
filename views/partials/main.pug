@@ -22,6 +22,11 @@ div(ng-controller='MainCtrl')
         .eventMain
         .eventMain
 
+
+div
+    .events(ng-repeat="event in events")
+        p {{event}}
+
 .eventFooter
     p Lorem ipstheEvent dolor sit amet, consectetur adipiscing elit. Nullam aliquet, quam nec venenatis
         | Lorem ipstheEvent dolor sit amet, consectetur adipiscing elit. Nullam aliquet, quam nec venenatis

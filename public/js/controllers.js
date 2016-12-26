@@ -17,7 +17,22 @@ controller('AppCtrl', function($scope, $http) {
     });
 
 }).
-controller('MainCtrl', ['$scope', function($scope) {
+controller('MainCtrl', ['$scope', '$http', function($scope, $http) {
+
+    //get all events
+    $http({
+        method: 'GET',
+        url: '/api/events'
+    }).
+    success(function(data, status, headers, config) {
+        $scope.events = data;
+        console.log(data);
+    }).
+    error((error) => {
+        $scope.events = [];
+        console.log('Error: ' + error);
+    });
+
     $scope.months = [];
     $scope.months.push("February");
     $scope.months.push("March");
@@ -44,6 +59,10 @@ controller('MainCtrl', ['$scope', function($scope) {
     }];
 }]).
 controller('MyCtrl1', function($scope) {
+    // write Ctrl here
+
+}).
+controller('MyCtrl2', function($scope) {
     // write Ctrl here
 
 }).
