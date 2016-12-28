@@ -1,38 +1,38 @@
-div(ng-controller='MainCtrl')
-    #slides_control
-        div
-            carousel(interval='myInterval')
-                slide(ng-repeat='slide in slides', active='slide.active')
-                    img(ng-src='{{slide.image}}')
-                    .carousel-caption
-                        h4 Slide {{$index+1}}
-    .upcoming
-        h3 UPCOMING EVENTS
-    .calendar
-        .month January
-        .months(ng-repeat="month in months")
-            p {{month}}
-    .eventsMainContainer
+#slides_control
+    div
+        carousel(interval='myInterval')
+            slide(ng-repeat='slide in slides', active='slide.active')
+                img(ng-src='{{slide.image}}')
+                .carousel-caption
+                    h4 Slide {{$index+1}}
+.upcoming
+    h3 UPCOMING EVENTS
+.calendar
+    .month January
+    .months(ng-repeat="month in months")
+        p {{month}}
+.eventsMainContainer
+    a(href="event/1")
         .eventMain
-        .eventMain
-        .eventMain
-        .eventMain
-        .eventMain
-        .eventMain
-        .eventMain
-        .eventMain
+    .eventMain
+    .eventMain
+    .eventMain
+    .eventMain
+    .eventMain
+    .eventMain
+    .eventMain
 
 
 div
-    .events(ng-repeat="event in events")
-        p {{event}}
+.events(ng-repeat="event in events")
+    p {{event}}
 
 .eventFooter
     p Lorem ipstheEvent dolor sit amet, consectetur adipiscing elit. Nullam aliquet, quam nec venenatis
-        | Lorem ipstheEvent dolor sit amet, consectetur adipiscing elit. Nullam aliquet, quam nec venenatis
-        | Lorem ipstheEvent dolor sit amet, consectetur adipiscing elit. Nullam aliquet, quam nec venenatis
-        | Lorem ipstheEvent dolor sit amet, consectetur adipiscing elit. Nullam aliquet, quam nec venenatis
-        | Lorem ipstheEvent dolor sit amet, consectetur adipiscing elit. Nullam aliquet, quam nec venenatis
-        | Lorem ipstheEvent dolor sit amet, consectetur adipiscing elit. Nullam aliquet, quam nec venenatis
-        | Lorem ipstheEvent dolor sit amet, consectetur adipiscing elit. Nullam aliquet, quam nec venenatis
-        | Lorem ipstheEvent dolor sit
+    | Lorem ipstheEvent dolor sit amet, consectetur adipiscing elit. Nullam aliquet, quam nec venenatis
+    | Lorem ipstheEvent dolor sit amet, consectetur adipiscing elit. Nullam aliquet, quam nec venenatis
+    | Lorem ipstheEvent dolor sit amet, consectetur adipiscing elit. Nullam aliquet, quam nec venenatis
+    | Lorem ipstheEvent dolor sit amet, consectetur adipiscing elit. Nullam aliquet, quam nec venenatis
+    | Lorem ipstheEvent dolor sit amet, consectetur adipiscing elit. Nullam aliquet, quam nec venenatis
+    | Lorem ipstheEvent dolor sit amet, consectetur adipiscing elit. Nullam aliquet, quam nec venenatis
+    | Lorem ipstheEvent dolor sit
