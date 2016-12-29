@@ -57,12 +57,13 @@ img
 
 .eventMain
   display: flex
+  flex-wrap: wrap
   margin: 20px
   height: 300px
   width: 550px
   background-color: red
   background-size: 100% 100%
-  flex-direction: row
+  flex-direction: column
 
 .wrap
   background-color: white
@@ -72,19 +73,38 @@ img
 
 .lowerEventBanner
    display: flex
+   flex-direction: row
    justify-content: space-between
-   align-self: flex-end
+   margin-top: auto
+
+.hoverBanner
+    display: flex
 
 .category
     padding-left: 50px
     padding-right: 100px
     border: solid white
+    font-size: x-large
 
-.date
+
 .title
+  font-size: x-large
+  padding-right: 5px
+.wrapPrice
+  background-color: #00D8B7
+  clip-path: polygon(100% 0, 0 100%, 0 0)
 .price
+  transform: rotate(-45deg)
+  height:  100px
+  width: 100px
+  text-align: center
+  font-style: bold
+  font-size: x-large
 .location
-
+  font-weight: bold
+  padding-right: 10px
+  margin-left: auto
+.date
 .upcoming h3
     color: #374045
     margin: 10px

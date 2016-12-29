@@ -14,14 +14,15 @@ div(ng-controller='MainCtrl')
             p {{month}}
     .eventsMainContainer
         .eventMain(ng-repeat="event in events" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()")
-          span(ng-show='hoverEdit')
-            .price {{event.price}}
-            .title {{event.title}}
-            .location {{event.location}}
+          .hoverBanner(ng-show='hoverEdit')
+            .wrapPrice
+              .price {{event.price}}€
+            .fa.fa-map-marker.location {{event.location}}
+            .fa.fa-clock-o.date {{event.date}}
           .lowerEventBanner
             .wrap
                 .category {{event.category}}
-            .date {{event.date}}
+            .title {{event.title}}
 
 
 div
