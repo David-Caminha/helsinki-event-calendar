@@ -13,19 +13,24 @@ div(ng-controller='MainCtrl')
         .months(ng-repeat="month in months")
             p {{month}}
     .eventsMainContainer
-        .eventMain
-        .eventMain
-        .eventMain
-        .eventMain
-        .eventMain
-        .eventMain
-        .eventMain
-        .eventMain
+        .eventMain(ng-repeat="event in events" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()")
+          span(ng-show='hoverEdit')
+            .price {{event.price}}
+            .title {{event.title}}
+            .location {{event.location}}
+          .lowerEventBanner
+            .wrap
+                .category {{event.category}}
+            .date {{event.date}}
 
 
 div
-    .events(ng-repeat="event in events")
-        p {{event}}
+    .events(ng-repeat="event in events" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()")
+        p {{event.category}}
+        span(ng-show='hoverEdit')
+        p {{event.date}}
+        p {{event.price}}
+        p {{event.title}}
 
 .eventFooter
     p Lorem ipstheEvent dolor sit amet, consectetur adipiscing elit. Nullam aliquet, quam nec venenatis

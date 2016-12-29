@@ -4,7 +4,7 @@
   border-right: 1px solid #ddd;
   display: flex;
   text-align: center;
-  overflow: hidden; }
+  overflow-x: scroll; }
 
 .activeMonth {
   background: #00D8B7; }
@@ -55,17 +55,27 @@ img {
   justify-content: center; }
 
 .eventMain {
+  display: flex;
   margin: 20px;
   height: 300px;
   width: 550px;
-  background: url(../images/2.jpg);
-  background-size: 100% 100%; }
+  background-color: red;
+  background-size: 100% 100%;
+  flex-direction: row; }
 
-.eventMain:hover {
-  height: 300px;
-  width: 550px;
-  background: url(../images/1.jpg);
-  background-size: 100% 100%; }
+.wrap {
+  background-color: white;
+  clip-path: polygon(0 0, 80% 0%, 100% 104%, 0% 104%); }
+
+.lowerEventBanner {
+  display: flex;
+  justify-content: space-between;
+  align-self: flex-end; }
+
+.category {
+  padding-left: 50px;
+  padding-right: 100px;
+  border: solid white; }
 
 .upcoming h3 {
   color: #374045;

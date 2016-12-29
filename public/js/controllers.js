@@ -45,7 +45,14 @@ controller('MainCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.months.push("October");
     $scope.months.push("November");
     $scope.months.push("December");
+    
+    $scope.hoverIn = function(){
+        this.hoverEdit = true;
+    };
 
+    $scope.hoverOut = function(){
+        this.hoverEdit = false;
+    };
 
     $scope.myInterval = 3000;
     $scope.slides = [{
