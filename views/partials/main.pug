@@ -14,15 +14,15 @@ div(ng-controller='MainCtrl')
             p {{month}}
     .eventsMainContainer
         .eventMain(ng-repeat="event in events" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()")
-          .hoverBanner(ng-show='hoverEdit')
-            .wrapPrice
-              .price {{event.price}}€
-            .fa.fa-map-marker.location {{event.location}}
-            .fa.fa-clock-o.date {{event.date}}
-          .lowerEventBanner
-            .wrap
-                .category {{event.category}}
-            .title {{event.title}}
+            .hoverBanner(ng-show='hoverEdit')
+                .wrapPrice
+                    .price {{event.price}}€
+                .fa.fa-map-marker.location {{event.location}}
+                .fa.fa-clock-o.date {{event.date}}
+            .lowerEventBanner
+                .wrap
+                    .category {{event.category}}
+                .title {{event.title}}
 
 
 div
@@ -35,10 +35,10 @@ div
 
 .eventFooter
     p Lorem ipstheEvent dolor sit amet, consectetur adipiscing elit. Nullam aliquet, quam nec venenatis
-        | Lorem ipstheEvent dolor sit amet, consectetur adipiscing elit. Nullam aliquet, quam nec venenatis
-        | Lorem ipstheEvent dolor sit amet, consectetur adipiscing elit. Nullam aliquet, quam nec venenatis
-        | Lorem ipstheEvent dolor sit amet, consectetur adipiscing elit. Nullam aliquet, quam nec venenatis
-        | Lorem ipstheEvent dolor sit amet, consectetur adipiscing elit. Nullam aliquet, quam nec venenatis
-        | Lorem ipstheEvent dolor sit amet, consectetur adipiscing elit. Nullam aliquet, quam nec venenatis
-        | Lorem ipstheEvent dolor sit amet, consectetur adipiscing elit. Nullam aliquet, quam nec venenatis
-        | Lorem ipstheEvent dolor sit
+    | Lorem ipstheEvent dolor sit amet, consectetur adipiscing elit. Nullam aliquet, quam nec venenatis
+    | Lorem ipstheEvent dolor sit amet, consectetur adipiscing elit. Nullam aliquet, quam nec venenatis
+    | Lorem ipstheEvent dolor sit amet, consectetur adipiscing elit. Nullam aliquet, quam nec venenatis
+    | Lorem ipstheEvent dolor sit amet, consectetur adipiscing elit. Nullam aliquet, quam nec venenatis
+    | Lorem ipstheEvent dolor sit amet, consectetur adipiscing elit. Nullam aliquet, quam nec venenatis
+    | Lorem ipstheEvent dolor sit amet, consectetur adipiscing elit. Nullam aliquet, quam nec venenatis
+    | Lorem ipstheEvent dolor sit

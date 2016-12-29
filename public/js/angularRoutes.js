@@ -12,20 +12,23 @@ angular.module('myApp', [
 config(function($routeProvider, $locationProvider) {
     $routeProvider.
     when('/', {
-        templateUrl: 'partials/main.pug',
+        templateUrl: '/partials/main.pug',
         controller: 'MainCtrl'
     }).
-    when('/event', {
-        templateUrl: 'partials/event.pug',
-        controller: 'MyCtrl1'
+    when('/event/:event_id', {
+        templateUrl: '/partials/event.pug',
+        controller: 'EventPageCtrl'
+    }).
+    when('/create_event', {
+        templateUrl: '/partials/createEvent.pug',
+        controller: 'EventCreaterCtrl'
     }).
     when('/teste', {
-        templateUrl: 'partials/teste.pug',
-        controller: 'MyCtrl2'
+        templateUrl: '/partials/teste.pug',
+        controller: 'MainCtrl'
     }).
     otherwise({
-        redirectTo: '/teste',
-        controller: 'MainCtrl'
+        redirectTo: '/'
     });
 
     $locationProvider.html5Mode(true);
