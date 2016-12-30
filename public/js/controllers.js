@@ -74,6 +74,8 @@ controller('EventCreaterCtrl', function($scope, $http) {
   $scope.createEvent = () => {
     var fd = new FormData();
     fd.append('mainImage', $scope.mainImage);
+    fd.append('eventImage', $scope.eventImage);
+    fd.append('locationImage', $scope.locationImage);
     fd.append('title', $scope.formData.title);
     fd.append('category', $scope.formData.category);
     fd.append('date', $scope.formData.date);

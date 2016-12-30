@@ -45,11 +45,13 @@ router.get('/api/events', function (req, res) {
 });
 
 //Create a new event
-router.post('/api/events', upload.single('mainImage'), (req, res, next) => {
+var multiUpload = upload.fields([{ name: 'mainImage', maxCount: 1 },
+{ name: 'eventImage', maxCount: 1 }, { name: 'locationImage', maxCount: 1 }])
+router.post('/api/events', multiUpload, (req, res, next) => {
   console.log("body");
   console.log(req.body);
   console.log("file");
-  console.log(req.file);
+  console.log(req.files);
   // Grab data from http request
   const data = {title: req.body.title,
     category: req.body.category,
@@ -80,8 +82,8 @@ router.post('/api/events', upload.single('mainImage'), (req, res, next) => {
     });
     query1.on('end', function(result) {
       console.log('row inserted with id: ' + result.rows[0].id);
-      console.log(req.file);
-      cloudinary.uploader.upload(req.file.path, function(cloudinaryResult){
+      //UPLOAD MAIN IMAGE
+      cloudinary.uploader.upload(req.files.mainImage[0].path, function(cloudinaryResult){
         console.log(cloudinaryResult);
         const query2 = client.query(
           'INSERT INTO "Image"(filename , "imageLocation", "eventId") values($1, $2, $3)',
@@ -89,11 +91,35 @@ router.post('/api/events', upload.single('mainImage'), (req, res, next) => {
         );
         query2.on('end', function(result) {
           done();
-          fs.unlink(req.file.path);
-          return res.status(200).json({success: true});
+          fs.unlink(req.files.mainImage[0].path);
+        });
+      });
+      //UPLOAD EVENT IMAGE
+      cloudinary.uploader.upload(req.files.eventImage[0].path, function(cloudinaryResult){
+        console.log(cloudinaryResult);
+        const query3 = client.query(
+          'INSERT INTO "Image"(filename , "imageLocation", "eventId") values($1, $2, $3)',
+          [cloudinaryResult.public_id, 2, result.rows[0].id]
+        );
+        query3.on('end', function(result) {
+          done();
+          fs.unlink(req.files.eventImage[0].path);
+        });
+      });
+      //UPLOAD LOCATION IMAGE
+      cloudinary.uploader.upload(req.files.locationImage[0].path, function(cloudinaryResult){
+        console.log(cloudinaryResult);
+        const query4 = client.query(
+          'INSERT INTO "Image"(filename , "imageLocation", "eventId") values($1, $2, $3)',
+          [cloudinaryResult.public_id, 4, result.rows[0].id]
+        );
+        query4.on('end', function(result) {
+          done();
+          fs.unlink(req.files.locationImage[0].path);
         });
       });
       done();
+      return res.status(200).json({success: true});
     });
   });
 });
