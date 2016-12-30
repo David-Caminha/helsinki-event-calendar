@@ -183,3 +183,30 @@
 		margin-left:0;
 	}
 }
+
+.block {
+  display: block;
+  padding: 10px 20px;
+  margin: 0 auto;
+}
+
+.recipes {
+  display: block;
+  width: 300px;
+}
+
+.submit {
+  display: inline-block;
+  width: 100px;
+  font-weight: 300;
+  color: #FFF;
+  padding: 8px 10px;
+  background-color: #f07b00;
+  border: none;
+  border-radius: 3px;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: #D96F00;
+  }
+}

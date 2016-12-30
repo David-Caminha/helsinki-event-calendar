@@ -7,7 +7,10 @@ angular.module('myApp', [
     'myApp.filters',
     'myApp.services',
     'myApp.directives',
-    'ui.bootstrap'
+    'ngTagsInput',
+    'ui.bootstrap',
+    'ngRoute'
+
 ]).
 config(function($routeProvider, $locationProvider) {
     $routeProvider.
@@ -31,5 +34,8 @@ config(function($routeProvider, $locationProvider) {
         redirectTo: '/'
     });
 
-    $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode({
+      enabled: true,
+      requireBase: false
+    });
 });
