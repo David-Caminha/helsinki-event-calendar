@@ -114,7 +114,7 @@ controller('EventCreaterCtrl', function($scope, $http) {
 controller('EventPageCtrl', function($scope, $http, $routeParams) {
 
   console.log("route params: " + $routeParams.event_id);
-  //get one event
+  //get info for one event
   $http({
     method: 'GET',
     url: '/api/events/' + $routeParams.event_id
@@ -122,6 +122,19 @@ controller('EventPageCtrl', function($scope, $http, $routeParams) {
   success((data, status, headers, config) => {
     $scope.event = data[0];
     console.log($scope.event);
+  }).
+  error((error) => {
+    $scope.event = {};
+    console.log('Error: ' + error);
+  });
+  //get images for the same event
+  $http({
+    method: 'GET',
+    url: '/api/images/' + $routeParams.event_id
+  }).
+  success((data, status, headers, config) => {
+    $scope.images = data;
+    console.log($scope.images);
   }).
   error((error) => {
     $scope.event = {};

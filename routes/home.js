@@ -35,7 +35,7 @@ router.get('/api/events', function (req, res) {
       {
         for(var row in result.rows)
         {
-          result.rows[row].image = cloudinary.url(result.rows[row].filename);
+          result.rows[row].imageUrl = cloudinary.url(result.rows[row].filename);
         }
         console.log(result.rows);
         res.json(result.rows);
@@ -142,6 +142,34 @@ router.get('/api/events/:event_id', (req, res, next) => {
     [id]);
     // Stream results back one row at a time
     query.on('row', (row) => {
+      results.push(row);
+    });
+    // After all data is returned, close connection and return results
+    query.on('end', function() {
+      done();
+      return res.json(results);
+    });
+  });
+});
+
+router.get('/api/images/:event_id', (req, res, next) => {
+  const results = [];
+  // Grab data from the URL parameters
+  const id = req.params.event_id;
+  // Get a Postgres client from the connection pool
+  pg.connect(connectionString, (err, client, done) => {
+    // Handle connection errors
+    if(err) {
+      done();
+      console.log(err);
+      return res.status(500).json({success: false, data: err});
+    }
+    // SQL Query > Select Data
+    const query = client.query('SELECT * FROM "Image" WHERE "eventId"=($1)',
+    [id]);
+    // Stream results back one row at a time
+    query.on('row', (row) => {
+      row.imageUrl = cloudinary.url(row.filename);
       results.push(row);
     });
     // After all data is returned, close connection and return results

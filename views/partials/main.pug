@@ -13,16 +13,17 @@ div(ng-controller='MainCtrl')
         .months(ng-repeat="month in months")
             p {{month}}
     .eventsMainContainer
-        .eventMain(ng-repeat="event in events" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()" style="background-image: url(\"{{event.image}}\")")
-            .hoverBanner(ng-show='hoverEdit')
-                .wrapPrice
-                    .price {{event.price}}€
-                .fa.fa-map-marker.location {{event.location}}
-                .fa.fa-clock-o.date {{event.date}}
-            .lowerEventBanner
-                .wrap
-                    .category {{event.category}}
-                .title {{event.title}}
+        a(ng-repeat="event in events" ng-href="/event/{{event.id}}")
+            .eventMain(ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()" style="background-image: url(\"{{event.imageUrl}}\")")
+                .hoverBanner(ng-show='hoverEdit')
+                    .wrapPrice
+                        .price {{event.price}}€
+                    .fa.fa-map-marker.location {{event.location}}
+                    .fa.fa-clock-o.date {{event.date}}
+                .lowerEventBanner
+                    .wrap
+                        .category {{event.category}}
+                    .title {{event.title}}
 
 
 div
@@ -32,7 +33,7 @@ div
         p {{event.date}}
         p {{event.price}}
         p {{event.title}}
-        p {{event.image}}
+        p {{event.imageUrl}}
 
 .eventFooter
     p Lorem ipstheEvent dolor sit amet, consectetur adipiscing elit. Nullam aliquet, quam nec venenatis
