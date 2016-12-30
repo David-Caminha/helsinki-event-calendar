@@ -76,6 +76,15 @@ controller('EventCreaterCtrl', function($scope, $http) {
     fd.append('mainImage', $scope.mainImage);
     fd.append('eventImage', $scope.eventImage);
     fd.append('locationImage', $scope.locationImage);
+    fd.append('speakers', $scope.speakerImage1);
+    fd.append('speakers', $scope.speakerImage2);
+    fd.append('speakers', $scope.speakerImage3);
+    fd.append('speakers', $scope.speakerImage4);
+    fd.append('speakers', $scope.speakerImage5);
+    fd.append('speakers', $scope.speakerImage6);
+    fd.append('speakers', $scope.speakerImage7);
+    fd.append('speakers', $scope.speakerImage8);
+    fd.append('speakers', $scope.speakerImage9);
     fd.append('title', $scope.formData.title);
     fd.append('category', $scope.formData.category);
     fd.append('date', $scope.formData.date);
@@ -87,17 +96,6 @@ controller('EventCreaterCtrl', function($scope, $http) {
     console.log($scope.formData);
     console.log($scope.mainImage);
     console.log(fd);
-    // $http.post('/api/img/upload', fd, {
-    //   transformRequest: angular.identity,
-    //   headers: {'Content-Type': undefined}
-    // })
-    // .success((data) => {
-    //   $scope.formData = {};
-    //   console.log('Success');
-    // })
-    // .error((error) => {
-    //   console.log('Error: ' + error);
-    // });
     $http.post('/api/events', fd, {
       transformRequest: angular.identity,
       headers: {'Content-Type': undefined}

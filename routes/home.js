@@ -8,17 +8,29 @@ var multer  = require('multer')
 var upload = multer({ dest: 'uploads/' })
 var cloudinary = require('cloudinary');
 var fs = require('fs');
-//ROUTES RELATED TO CLOUDINARY ---------- START ----------
+//HELPER FUNCTIONS RELATED TO CLOUDINARY ---------- START ----------
 
-//Upload image to cloudinary
-// router.post('/api/img/upload', upload.single('mainImage'), function (req, res) {
-//   console.log(req.file);
-//   cloudinary.uploader.upload(req.file.path, function(result){
-//     console.log(result);
-//   });
-// });
-
-//ROUTES RELATED TO CLOUDINARY ---------- END ----------
+function updateCloudinaryAndDB(filepath, imageLocation, eventId){
+  pg.connect(connectionString, (err, client, done) => {
+    // Handle connection errors
+    if(err) {
+      done();
+      console.log(err);
+      return res.status(500).json({success: false, data: err});
+    }
+    cloudinary.uploader.upload(filepath, function(cloudinaryResult){
+      var query = client.query(
+        'INSERT INTO "Image"(filename , "imageLocation", "eventId") values($1, $2, $3)',
+        [cloudinaryResult.public_id, imageLocation, eventId]
+      );
+      query.on('end', function(result) {
+        done();
+        fs.unlink(filepath);
+      });
+    });
+  });
+}
+//HELPER FUNCTIONS RELATED TO CLOUDINARY ---------- END ----------
 
 //ROUTES TO GET THE DATABASE INFO ---------- START ----------
 //Get info for all events
@@ -46,7 +58,7 @@ router.get('/api/events', function (req, res) {
 
 //Create a new event
 var multiUpload = upload.fields([{ name: 'mainImage', maxCount: 1 },
-{ name: 'eventImage', maxCount: 1 }, { name: 'locationImage', maxCount: 1 }])
+{ name: 'eventImage', maxCount: 1 }, { name: 'locationImage', maxCount: 1 }, { name: 'speakers', maxCount: 9 }])
 router.post('/api/events', multiUpload, (req, res, next) => {
   console.log("body");
   console.log(req.body);
@@ -83,41 +95,16 @@ router.post('/api/events', multiUpload, (req, res, next) => {
     query1.on('end', function(result) {
       console.log('row inserted with id: ' + result.rows[0].id);
       //UPLOAD MAIN IMAGE
-      cloudinary.uploader.upload(req.files.mainImage[0].path, function(cloudinaryResult){
-        console.log(cloudinaryResult);
-        const query2 = client.query(
-          'INSERT INTO "Image"(filename , "imageLocation", "eventId") values($1, $2, $3)',
-          [cloudinaryResult.public_id, 1, result.rows[0].id]
-        );
-        query2.on('end', function(result) {
-          done();
-          fs.unlink(req.files.mainImage[0].path);
-        });
-      });
+      updateCloudinaryAndDB(req.files.mainImage[0].path, 1, result.rows[0].id);
       //UPLOAD EVENT IMAGE
-      cloudinary.uploader.upload(req.files.eventImage[0].path, function(cloudinaryResult){
-        console.log(cloudinaryResult);
-        const query3 = client.query(
-          'INSERT INTO "Image"(filename , "imageLocation", "eventId") values($1, $2, $3)',
-          [cloudinaryResult.public_id, 2, result.rows[0].id]
-        );
-        query3.on('end', function(result) {
-          done();
-          fs.unlink(req.files.eventImage[0].path);
-        });
-      });
+      updateCloudinaryAndDB(req.files.eventImage[0].path, 2, result.rows[0].id);
+      //UPLOAD SPEAKERS IMAGES
+      for(var speaker in req.files.speakers)
+      {
+        updateCloudinaryAndDB(req.files.speakers[speaker].path, 3, result.rows[0].id);
+      }
       //UPLOAD LOCATION IMAGE
-      cloudinary.uploader.upload(req.files.locationImage[0].path, function(cloudinaryResult){
-        console.log(cloudinaryResult);
-        const query4 = client.query(
-          'INSERT INTO "Image"(filename , "imageLocation", "eventId") values($1, $2, $3)',
-          [cloudinaryResult.public_id, 4, result.rows[0].id]
-        );
-        query4.on('end', function(result) {
-          done();
-          fs.unlink(req.files.locationImage[0].path);
-        });
-      });
+      updateCloudinaryAndDB(req.files.locationImage[0].path, 4, result.rows[0].id);
       done();
       return res.status(200).json({success: true});
     });
@@ -153,7 +140,8 @@ router.get('/api/events/:event_id', (req, res, next) => {
 });
 
 router.get('/api/images/:event_id', (req, res, next) => {
-  const results = [];
+  const results = {};
+  results.speakers = [];
   // Grab data from the URL parameters
   const id = req.params.event_id;
   // Get a Postgres client from the connection pool
@@ -170,7 +158,18 @@ router.get('/api/images/:event_id', (req, res, next) => {
     // Stream results back one row at a time
     query.on('row', (row) => {
       row.imageUrl = cloudinary.url(row.filename);
-      results.push(row);
+      if(row.imageLocation === 1) {
+        results['mainImage'] = row.imageUrl;
+      }
+      if(row.imageLocation === 2){
+        results['eventImage'] = row.imageUrl;
+      }
+      if(row.imageLocation === 3){
+        results.speakers.push(row.imageUrl);
+      }
+      if(row.imageLocation === 4){
+        results['locationImage'] = row.imageUrl;
+      }
     });
     // After all data is returned, close connection and return results
     query.on('end', function() {
