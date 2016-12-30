@@ -7,6 +7,14 @@
 var app = require('../app');
 var debug = require('debug')('helsinki-event-calendar:server');
 var http = require('http');
+var cloudinary = require('cloudinary');
+
+
+cloudinary.config({
+  cloud_name: 'hcunr1wyk',
+  api_key: '898165989846288',
+  api_secret: 'yhg0LrJ8hxcZBys6J6ehrvIwtb4'
+});
 
 /**
  * Get port from environment and store in Express.
