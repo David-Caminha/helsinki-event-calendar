@@ -1,10 +1,9 @@
-
 form
     .createEventForm
         input(type="text" class="form-control input-lg" placeholder="Event title" maxlength="20" ng-model="formData.title" required)
         input(type="file" class="form-control input-lg" file-input="mainImage" name="mainImage" required)
         input(type="text" class="form-control input-lg" placeholder="Event category" maxlength="15" ng-model="formData.category" required)
-        input(type="datetime-local" class="form-control input-lg" ng-model="formData.date" required)
+        input(type="datetime-local" placeholder="yyyy-MM-ddTHH:mm:ss" class="form-control input-lg" ng-model="formData.date" required)
         input(type="text" class="form-control input-lg" placeholder="What is happening..." ng-model="formData.infoWhat")
         input(type="file" class="form-control input-lg" file-input="eventImage" name="eventImage")
         input(type="number" class="form-control input-lg" min="0" value="0" ng-model="formData.price")

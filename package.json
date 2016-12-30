@@ -20,6 +20,7 @@
     "method-override": "^1.0.0",
     "morgan": "~1.7.0",
     "multer": "1.2.1",
+    "ng-tags-input": "^3.1.1",
     "node-sass-middleware": "0.8.0",
     "pg": "4.x",
     "pug": "2.0.0-beta6",

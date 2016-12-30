@@ -1,4 +1,4 @@
-div(ng-controller='MainCtrl')
+div
     #slides_control
         div
             carousel(interval='myInterval')
@@ -13,7 +13,7 @@ div(ng-controller='MainCtrl')
         .months(ng-repeat="month in months")
             p {{month}}
     .eventsMainContainer
-        a(ng-repeat="event in events" ng-href="/event/{{event.id}}")
+        a(ng-repeat="event in events | filter:myFilter" ng-href="/event/{{event.id}}")
             .eventMain(ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()" style="background-image: url(\"{{event.imageUrl}}\")")
                 .hoverBanner(ng-show='hoverEdit')
                     .wrapPrice
@@ -25,15 +25,8 @@ div(ng-controller='MainCtrl')
                         .category {{event.category}}
                     .title {{event.title}}
 
-
-div
-    .events(ng-repeat="event in events" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()")
-        p {{event.category}}
-        span(ng-show='hoverEdit')
-        p {{event.date}}
-        p {{event.price}}
-        p {{event.title}}
-        p {{event.imageUrl}}
+        tags-input(ng-model='inputText')
+        p Model: {{inputText}}
 
 .eventFooter
     p Lorem ipstheEvent dolor sit amet, consectetur adipiscing elit. Nullam aliquet, quam nec venenatis
