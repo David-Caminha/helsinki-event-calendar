@@ -1,3 +1,5 @@
+
+
 .header-two-bars{
 	position: fixed;
 	font:13px Arial, Helvetica, sans-serif;
@@ -22,7 +24,7 @@
 }
 
 .header-two-bars h1 span {
-	color: #bc40df;
+	color: #F8CD55;
 }
 
 /* The first bar */

@@ -109,11 +109,11 @@ body {
 
 .sideBar {
   position: fixed;
-  margin-top: 140px;
   width: 280px;
   bottom: 250px;
-  top: 0px;
-  text-align: center; }
+  text-align: center;
+  border-right: solid #F8754D;
+  margin-right: 10px; }
 
 .navElement {
   color: red;
@@ -121,8 +121,9 @@ body {
   padding: 20px; }
 
 .eventPage {
-  margin-left: 280px;
-  margin-top: 140px; }
+  margin-left: 290px;
+  margin-top: 80px;
+  width: 100%; }
 
 .active {
   background-color: pink;

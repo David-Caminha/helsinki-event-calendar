@@ -1,3 +1,4 @@
+
 div
     #slides_control
         div
@@ -8,6 +9,10 @@ div
                         h4 Slide {{$index+1}}
     .upcoming
         h3 UPCOMING EVENTS
+    .header-second-bar
+        h3 Search by tags:
+        tags-input(ng-model='inputText')
+            .header-limiter
     .calendar
         .month January
         .months(ng-repeat="month in months")
@@ -25,8 +30,7 @@ div
                         .category {{event.category}}
                     .title {{event.title}}
 
-        tags-input(ng-model='inputText')
-        p Model: {{inputText}}
+
 
 .eventFooter
     p Lorem ipstheEvent dolor sit amet, consectetur adipiscing elit. Nullam aliquet, quam nec venenatis

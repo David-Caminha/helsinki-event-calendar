@@ -9,15 +9,7 @@
         .banner(style="background-image: url(\"{{images.mainImage}}\")")
             .banner-overlay
                 h1 {{event.title}}
-                h3 22nd December 2016
-                ul.countdown
-                    li 000 days
-                    li 00 hours
-                    li 00 minutes
-                    li 00 seconds
-                .buttons
-                    button Add to Calendar
-                    button Find us
+                h3 {{event.date}}
         section#theEvent.event-info
             .event-picture(style="background-image: url(\"{{images.eventImage}}\")")
             .event-text
@@ -27,7 +19,6 @@
             .speaker-pictures
                 .picture(ng-repeat="speaker in images.speakers")
                     img(src="{{speaker}}")
-                    h3 Jane Doe
             .speaker-text
                 h3 The Atendees
                 p {{event.infoWho}}
